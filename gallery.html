@@ -1,0 +1,28 @@
+---
+layout: default
+title: By Color
+---
+
+<div class="filter-bar">
+  <button class="active" data-filter="all">All</button>
+  <button data-filter="red">Red</button>
+  <button data-filter="yellow">Yellow</button>
+  <button data-filter="teal">Teal</button>
+  <button data-filter="blue">Blue</button>
+  <button data-filter="green">Green</button>
+  <button data-filter="orange">Orange</button>
+</div>
+
+<div class="gallery-grid">
+  {% assign sorted = site.photos | sort: "tier" %}
+  {% for photo in sorted %}
+  <div class="photo-card" data-colors="{{ photo.colors | join: ' ' }}" data-tier="{{ photo.tier }}">
+    <a href="{{ photo.url }}">
+      <img src="/assets/images/{{ photo.image }}" alt="{{ photo.anchor }}">
+      <span class="tier-badge">T{{ photo.tier }}</span>
+    </a>
+  </div>
+  {% endfor %}
+</div>
+
+<script src="/assets/js/filter.js"></script>

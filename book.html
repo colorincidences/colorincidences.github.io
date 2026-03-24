@@ -1,0 +1,19 @@
+---
+layout: default
+title: The Book
+---
+
+<div class="book-sequence">
+  {% assign sequence = site.photos | sort: "sequence" %}
+  {% for photo in sequence %}
+  <div class="spread {{ photo.category }}">
+    <a href="{{ photo.url }}">
+      <img src="/assets/images/{{ photo.image }}" alt="{{ photo.anchor }}">
+    </a>
+    <div class="spread-meta">
+      <p class="anchor">{{ photo.anchor }}</p>
+      <span class="act">{{ photo.narrative_role }}</span>
+    </div>
+  </div>
+  {% endfor %}
+</div>
